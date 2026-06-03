@@ -1,0 +1,27 @@
+name: Atualização Diária do Robô de Futebol
+
+on:
+  schedule:
+    - cron: '0 7 * * *' # Roda às 07:00 UTC (04:00 Horário de Brasília)
+  workflow_dispatch: # Permite que você rode o robô manualmente clicando em um botão
+
+jobs:
+  rodar-ia:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar código do repositório
+        uses: actions/checkout@v3
+
+      - name: Configurar o Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-node: '18'
+
+      - name: Instalar dependências
+        run: npm install
+
+      - name: Executar o Motor de Poisson
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: node index.js
