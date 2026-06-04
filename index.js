@@ -1,4 +1,4 @@
-const { createClient } = require('@supabase/supabase-client');
+import { createClient } from '@supabase/supabase-js';
 
 // 1. Inicializa o Supabase usando as variáveis de ambiente seguras
 const supabaseUrl = process.env.SUPABASE_URL;
