@@ -3,19 +3,19 @@ name: Atualização Diária do Robô de Futebol
 on:
   schedule:
     - cron: '0 7 * * *' # Roda às 07:00 UTC (04:00 Horário de Brasília)
-  workflow_dispatch: # Permite que você rode o robô manualmente clicando em um botão
+  workflow_dispatch: # Permite rodar o robô manualmente clicando no botão
 
 jobs:
   rodar-ia:
     runs-on: ubuntu-latest
     steps:
       - name: Baixar código do repositório
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Configurar o Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-node: '18'
+          node-version: '20' # Corrigido aqui de 'node-node' para 'node-version'
 
       - name: Instalar dependências
         run: npm install
