@@ -1,9 +1,9 @@
-name: Atualização Diária do Robô de Futebol
+name: Atualização Diária do Robô
 
 on:
   schedule:
-    - cron: '0 7 * * *' # Roda às 07:00 UTC (04:00 Horário de Brasília)
-  workflow_dispatch: # Permite rodar o robô manualmente clicando no botão
+    - cron: '0 7 * * *' # Roda às 04:00 da manhã (Horário de Brasília)
+  workflow_dispatch: # Permite rodar manualmente pelo botão
 
 jobs:
   rodar-ia:
@@ -15,7 +15,7 @@ jobs:
       - name: Configurar o Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20' # Corrigido aqui de 'node-node' para 'node-version'
+          node-version: '24' # Atualizado para o Node 24 estável
 
       - name: Instalar dependências
         run: npm install
